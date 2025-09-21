@@ -25,50 +25,31 @@
     </div>
 
     <script>
+        const map = {
+            'ক': 'k', 'খ': 'kh', 'গ': 'g', 'ঘ': 'gh', 'চ': 'ch', 'ছ': 'chh',
+            'জ': 'j', 'ঝ': 'jh', 'ট': 't', 'ঠ': 'th', 'ড': 'd', 'ঢ': 'dh',
+            'ণ': 'n', 'ত': 't', 'থ': 'th', 'দ': 'd', 'ধ': 'dh', 'ন': 'n',
+            'প': 'p', 'ফ': 'ph', 'ব': 'b', 'ভ': 'bh', 'ম': 'm',
+            'য': 'y', 'র': 'r', 'ল': 'l', 'শ': 'sh', 'ষ': 'sh', 'স': 's', 'হ': 'h',
+            'অ': 'o', 'আ': 'a', 'ই': 'i', 'ঈ': 'ii', 'উ': 'u', 'ঊ': 'uu',
+            'এ': 'e', 'ঐ': 'oi', 'ও': 'o', 'ঔ': 'ou',
+            'া': 'a', 'ি': 'i', 'ী': 'ii', 'ু': 'u', 'ূ': 'uu', 'ে': 'e', 'ৈ': 'oi', 'ো': 'o', 'ৌ': 'ou',
+            'ঁ': 'n', 'ং': 'ng', 'ঃ': '', '্': ''
+        };
+
         const input = document.getElementById('banglaInput');
         const output = document.getElementById('output');
 
+        function transliterate(text){
+            let result = '';
+            for(let char of text){
+                result += map[char] || char;
+            }
+            return result;
+        }
+
         input.addEventListener('input', () => {
-            let text = input.value;
-
-            let converted = text
-                .replace(/অ/g, 'o')
-                .replace(/আ/g, 'a')
-                .replace(/ই/g, 'i')
-                .replace(/উ/g, 'u')
-                .replace(/এ/g, 'e')
-                .replace(/ও/g, 'o')
-                .replace(/ক/g, 'k')
-                .replace(/খ/g, 'kh')
-                .replace(/গ/g, 'g')
-                .replace(/ঘ/g, 'gh')
-                .replace(/চ/g, 'c')
-                .replace(/ছ/g, 'ch')
-                .replace(/জ/g, 'j')
-                .replace(/ঝ/g, 'jh')
-                .replace(/ট/g, 't')
-                .replace(/ঠ/g, 'th')
-                .replace(/ড/g, 'd')
-                .replace(/ঢ/g, 'dh')
-                .replace(/ণ/g, 'n')
-                .replace(/ত/g, 't')
-                .replace(/থ/g, 'th')
-                .replace(/দ/g, 'd')
-                .replace(/ধ/g, 'dh')
-                .replace(/ন/g, 'n')
-                .replace(/প/g, 'p')
-                .replace(/ফ/g, 'ph')
-                .replace(/ব/g, 'b')
-                .replace(/ভ/g, 'bh')
-                .replace(/ম/g, 'm')
-                .replace(/য/g, 'y')
-                .replace(/র/g, 'r')
-                .replace(/ল/g, 'l')
-                .replace(/শ/g, 'sh')
-                .replace(/স/g, 's')
-                .replace(/হ/g, 'h');
-
-            output.value = converted;
+            output.value = transliterate(input.value);
         });
     </script>
 </body>
